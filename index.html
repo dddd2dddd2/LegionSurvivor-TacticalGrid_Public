@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Polygeddon</title>
+    <title>Polygeddon | 几何狂潮</title>
     
-    <!-- 1. FontAwesome 图标库 (如果这也慢，建议下载到本地 src/assets 引入) -->
+    <!-- FontAwesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- 2. Tailwind CSS -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // 配置 Tailwind 使用系统字体
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
                     },
                 }
             }
@@ -28,61 +27,61 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #000000;
+            background-color: #020617;
             color: #ffffff;
-            /* 3. 使用系统原生字体栈：最快、最稳定 */
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
             user-select: none;
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
             touch-action: none;
         }
+
+        /* --- 战术终端核心动画 --- */
         
-        canvas {
-            display: block;
+        /* 标题流光效果 */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .animate-shimmer {
+            background-size: 200% auto;
+            animation: shimmer 6s linear infinite;
         }
 
-        ::-webkit-scrollbar {
-            display: none;
+        /* 按钮内部扫描线 */
+        @keyframes scanline {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.4; }
+            100% { transform: translateY(1000%); opacity: 0; }
         }
-        * {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            -webkit-tap-highlight-color: transparent;
+        .animate-scanline {
+            animation: scanline 4s linear infinite;
         }
 
-        /* 加载动画 */
+        /* 呼吸灯效果 */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 3s ease-in-out infinite;
+        }
+
+        /* 加载动画 (仅在root为空时显示) */
         #root:empty::before {
-            content: "LOADING...";
+            content: "INITIALIZING_SYSTEM...";
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-family: monospace; /* Loading 用等宽字体更有极客感 */
+            font-family: monospace;
             font-weight: 900;
-            color: #4f46e5;
-            letter-spacing: 0.2em;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes pulse-gold {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-        }
-        .animate-pulse-gold {
-            animation: pulse-gold 2s infinite;
+            color: #6366f1;
+            letter-spacing: 0.3em;
+            animation: pulse-soft 1s infinite;
         }
     </style>
-  <script type="module" crossorigin src="./assets/index-DIY1MWhY.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BKccNmMt.css">
+  <script type="module" crossorigin src="./assets/index-uLTMMB9A.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CzYkV8Ve.css">
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root"></div>
 </body>
 </html>
